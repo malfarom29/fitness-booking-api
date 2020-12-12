@@ -1,0 +1,12 @@
+<% content_for :content_mailer do %>
+  <h1>Hi, <%= @user.first_name %>!</h1>
+  <p>
+    You have booked <b><%= @activity.name %></b>
+    Check the details:
+  </p>
+  <p>
+    <li>From: <%= Time.zone.parse(@schedule.begin_at.to_s).to_time  %>.<br>
+    <li>To: <%= Time.zone.parse(@schedule.finish_at.to_s).to_time  %>.<br>
+  </p>
+  <p>Thanks you for your preference.</p>
+<% end %>

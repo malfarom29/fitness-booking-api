@@ -4,4 +4,6 @@ class ScheduleActivity < ApplicationRecord
 
   has_many :schedule_activity_users
   has_many :users, through: :schedule_activity_users
+
+  validates :seats, numericality: { greater_than: :taken_seats }
 end

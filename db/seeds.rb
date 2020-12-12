@@ -13,4 +13,11 @@ User.create!({
                role: :admin,
                password: 'admin123'
              })
+User.create!({
+               first_name: 'John',
+               last_name: 'Doe',
+               email: 'johndoe@example.com',
+               role: :client,
+               password: 'test123'
+             })
 puts 'New user created!'
