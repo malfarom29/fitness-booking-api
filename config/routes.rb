@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
     namespace :client do
       resources :schedule_activities do
+        collection do
+          get :available, to: 'schedule_activities#available'
+        end
+
         member do
           post :book, to: 'schedule_activities#book'
         end

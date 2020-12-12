@@ -50,7 +50,7 @@ paths:
           examples:
             application/json:
               data:
-                id: 1
+                id: 115
                 name: foo
                 description: bar
                 mode: outdoor
@@ -134,10 +134,11 @@ paths:
           examples:
             application/json:
               data:
-                id: 2
+                id: 116
                 name: new name
-                description: Est iste aut. Nulla sed nemo. Aut itaque nobis.
-                mode: outdoor
+                description: Inventore consequatur voluptas. Earum ipsam eaque. Sint
+                  dolores qui.
+                mode: indoor
         '403':
           description: Forbidden
           examples:
@@ -169,13 +170,13 @@ paths:
           examples:
             application/json:
               data:
-                id: 5
-                name: cumque
-                description: Facilis in debitis. Aut beatae recusandae. Corporis occaecati
-                  rerum.
+                id: 119
+                name: nulla
+                description: Rerum amet autem. Officiis voluptatem consequatur. Itaque
+                  odit eum.
                 mode: indoor
-                created_at: '2020-12-12T11:54:16.232-06:00'
-                updated_at: '2020-12-12T11:54:16.232-06:00'
+                created_at: '2020-12-12T14:41:00.528-06:00'
+                updated_at: '2020-12-12T14:41:00.528-06:00'
         '403':
           description: Forbidden
           examples:
@@ -228,17 +229,17 @@ paths:
           examples:
             application/json:
               data:
-                id: 1
+                id: 51
                 schedule:
-                  id: 1
-                  begin_at: '2020-12-12T12:54:16.000-06:00'
-                  finish_at: '2020-12-12T13:54:16.000-06:00'
+                  id: 67
+                  begin_at: '2020-12-12T15:41:00.000-06:00'
+                  finish_at: '2020-12-12T16:41:00.000-06:00'
                 activity:
-                  id: 8
-                  name: omnis
-                  description: Blanditiis repellendus rerum. Et eum recusandae. Incidunt
-                    autem ratione.
-                  mode: virtual
+                  id: 122
+                  name: consequatur
+                  description: Sint enim numquam. Enim aut omnis. Debitis eligendi
+                    voluptas.
+                  mode: outdoor
                 taken_seats: 0
                 seats: 5
         '403':
@@ -287,9 +288,9 @@ paths:
           examples:
             application/json:
               data:
-                id: 3
-                begin_at: '2020-12-12T12:54:15.000-06:00'
-                finish_at: '2020-12-12T14:54:15.000-06:00'
+                id: 69
+                begin_at: '2020-12-12T15:40:59.000-06:00'
+                finish_at: '2020-12-12T17:40:59.000-06:00'
         '403':
           description: Forbidden
           examples:
@@ -316,7 +317,7 @@ paths:
         - Activities
       security:
       - bearerAuth: []
-      description: List of activities scheduled available for a client
+      description: List of activities booked by the client
       produces:
       - application/json
       responses:
@@ -324,19 +325,34 @@ paths:
           description: OK
           examples:
             application/json:
-              data:
-              - id: 2
-                schedule:
-                  id: 4
-                  begin_at: '2020-12-12T12:54:16.000-06:00'
-                  finish_at: '2020-12-12T13:54:16.000-06:00'
-                activity:
-                  id: 10
-                  name: fugit
-                  description: Ipsum et quia. Sed voluptate non. Minus vitae ut.
-                  mode: indoor
-                taken_seats: 0
-                seats: 6
+              data: []
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
+  "/client/schedule_activities/available":
+    get:
+      summary: List of schedules available
+      tags:
+      - - Clients
+        - Activities
+      security:
+      - bearerAuth: []
+      description: List of activities available to the client and that has not been
+        booked by him/her. The activities already booked by the client, will not be
+        shown
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json:
+              data: []
         '403':
           description: Forbidden
           examples:
@@ -366,18 +382,18 @@ paths:
           examples:
             application/json:
               data:
-              - id: 4
+              - id: 56
                 schedule:
-                  id: 6
-                  begin_at: '2020-12-12T12:54:16.000-06:00'
-                  finish_at: '2020-12-12T13:54:16.000-06:00'
+                  id: 74
+                  begin_at: '2020-12-12T15:41:00.000-06:00'
+                  finish_at: '2020-12-12T16:41:00.000-06:00'
                 activity:
-                  id: 12
-                  name: similique
-                  description: Et ipsum temporibus. Sint quis quia. Quo sed tempore.
+                  id: 128
+                  name: quasi
+                  description: Ipsam omnis id. Est temporibus earum. Modi id earum.
                   mode: indoor
                 taken_seats: 1
-                seats: 7
+                seats: 13
         '403':
           description: Forbidden
           examples:
@@ -421,12 +437,12 @@ paths:
           description: Get access token
           examples:
             application/json:
-              access_token: 6myWthT6mW1g1khBPIX0kbRESYx_cEut9YC7NkZe4EE
+              access_token: CznBbJ0hCuvvjDSviHNm7S59pWBfHOoMLeC7pHIjhFM
               token_type: Bearer
               expires_in: 7200
-              refresh_token: BVYCuMY1eG-TBFYdtmUEt4lHcjdbf97Bsk_WJoW02e4
+              refresh_token: 27tRl3-JYi2eE7wbVE7AeWaLP5rbnYjLawwjUXOY2X0
               scope: public
-              created_at: 1607795656
+              created_at: 1607805660
   "/users/register":
     post:
       summary: Register a user

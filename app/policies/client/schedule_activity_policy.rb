@@ -3,6 +3,10 @@ class Client::ScheduleActivityPolicy < ApplicationPolicy
     user.client?
   end
 
+  def available?
+    user.client?
+  end
+
   def book?
     user.client?
   end
