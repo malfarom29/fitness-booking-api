@@ -50,10 +50,18 @@ paths:
           examples:
             application/json:
               data:
-                id: 629
+                id: 816
                 name: foo
                 description: bar
                 mode: outdoor
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
         '422':
           description: Missing properties or Invalid Values
           examples:
@@ -79,6 +87,14 @@ paths:
           examples:
             application/json:
               data: []
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
   "/admin/activities/{id}":
     parameters:
     - name: id
@@ -118,10 +134,19 @@ paths:
           examples:
             application/json:
               data:
-                id: 630
+                id: 817
                 name: new name
-                description: Consectetur a quia. Ut ipsam iusto. Doloribus quod sed.
-                mode: indoor
+                description: Velit corporis aperiam. Nostrum dolorum voluptatem. Eum
+                  voluptate ut.
+                mode: outdoor
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
         '404':
           description: Not found
           examples:
@@ -145,12 +170,21 @@ paths:
           examples:
             application/json:
               data:
-                id: 632
-                name: aut
-                description: Et eum id. Cum aut alias. Unde ea ut.
-                mode: outdoor
-                created_at: '2020-12-12T07:46:48.499-06:00'
-                updated_at: '2020-12-12T07:46:48.499-06:00'
+                id: 820
+                name: minima
+                description: Consequatur eius dicta. Cumque excepturi perspiciatis.
+                  Omnis et sint.
+                mode: indoor
+                created_at: '2020-12-12T08:00:27.224-06:00'
+                updated_at: '2020-12-12T08:00:27.224-06:00'
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
         '404':
           description: Not found
           examples:
@@ -195,19 +229,27 @@ paths:
           examples:
             application/json:
               data:
-                id: 69
+                id: 120
                 schedule:
-                  id: 146
-                  begin_at: '2020-12-12T08:46:48.000-06:00'
-                  finish_at: '2020-12-12T09:46:48.000-06:00'
+                  id: 214
+                  begin_at: '2020-12-12T09:00:27.000-06:00'
+                  finish_at: '2020-12-12T10:00:27.000-06:00'
                 activity:
-                  id: 634
-                  name: non
-                  description: Tenetur repudiandae ut. Enim necessitatibus ut. Voluptas
-                    aut occaecati.
-                  mode: virtual
+                  id: 823
+                  name: necessitatibus
+                  description: Veritatis quibusdam enim. Repellendus libero et. Quia
+                    aspernatur mollitia.
+                  mode: outdoor
                 taken_seats: 0
                 seats: 5
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
   "/admin/schedules":
     post:
       summary: Add a new schedule
@@ -246,9 +288,17 @@ paths:
           examples:
             application/json:
               data:
-                id: 147
-                begin_at: '2020-12-12T08:46:48.000-06:00'
-                finish_at: '2020-12-12T10:46:48.000-06:00'
+                id: 216
+                begin_at: '2020-12-12T09:00:26.000-06:00'
+                finish_at: '2020-12-12T11:00:26.000-06:00'
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
         '422':
           description: Invalid values
           examples:
@@ -276,17 +326,17 @@ paths:
           examples:
             application/json:
               data:
-              - id: 70
+              - id: 121
                 schedule:
-                  id: 148
-                  begin_at: '2020-12-12T08:46:48.000-06:00'
-                  finish_at: '2020-12-12T09:46:48.000-06:00'
+                  id: 217
+                  begin_at: '2020-12-12T09:00:27.000-06:00'
+                  finish_at: '2020-12-12T10:00:27.000-06:00'
                 activity:
-                  id: 635
-                  name: occaecati
-                  description: Ut mollitia est. Ut dignissimos tenetur. Autem laborum
-                    harum.
-                  mode: indoor
+                  id: 825
+                  name: id
+                  description: Beatae magnam consequatur. Unde sit nobis. Nostrum
+                    accusamus quibusdam.
+                  mode: virtual
                 taken_seats: 0
                 seats: 6
         '403':
@@ -332,12 +382,12 @@ paths:
           description: Get access token
           examples:
             application/json:
-              access_token: uDnXIDs6L1AaPDmUcovWiFAzzU7CMhZqokPCG3tedDc
+              access_token: VajBacngWetQv-gNZxAaia2F2RVwLkgQo6NLtNheerE
               token_type: Bearer
               expires_in: 7200
-              refresh_token: oC-1GMcseQj74XOe1CLvS6piOIWy5wOIJOgcG6MLz9A
+              refresh_token: Qt78nOS7oMey08JHPSL1c7-cosTocVhKL6Ge_jGFlfQ
               scope: public
-              created_at: 1607780808
+              created_at: 1607781627
   "/users/register":
     post:
       summary: Register a user
