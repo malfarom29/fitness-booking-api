@@ -4,7 +4,9 @@ class ApplicationController < ActionController::API
 
   before_action :doorkeeper_authorize!
   before_action :authorize_request!
-  before_action :set_resource, only: %i[update show]
+  before_action :set_resource, only: %i[update show book]
+
+  private
 
   def set_resource
     resource_name = self.class.to_s.split('::')

@@ -50,7 +50,7 @@ paths:
           examples:
             application/json:
               data:
-                id: 816
+                id: 258
                 name: foo
                 description: bar
                 mode: outdoor
@@ -86,7 +86,40 @@ paths:
           description: List of Activities
           examples:
             application/json:
-              data: []
+              data:
+              - id: 17
+                name: non
+                description: Sed deserunt earum. Nam voluptatibus cumque. Sunt ipsam
+                  modi.
+                mode: outdoor
+              - id: 68
+                name: cum
+                description: Aperiam voluptas eveniet. Placeat eius quisquam. Voluptatem
+                  in ut.
+                mode: virtual
+              - id: 119
+                name: et
+                description: Aut vel sit. Aut velit aut. Possimus accusantium tenetur.
+                mode: outdoor
+              - id: 34
+                name: quibusdam
+                description: Fugiat sed laboriosam. Voluptatem assumenda fuga. Consequatur
+                  voluptatem voluptatibus.
+                mode: virtual
+              - id: 85
+                name: deserunt
+                description: Eligendi cupiditate consequuntur. Autem earum quibusdam.
+                  Incidunt dolores qui.
+                mode: virtual
+              - id: 51
+                name: ducimus
+                description: Excepturi ipsum sunt. Recusandae sit rem. Doloremque
+                  cumque quae.
+                mode: virtual
+              - id: 102
+                name: quod
+                description: Esse nisi non. Ipsam voluptas iusto. In qui voluptatem.
+                mode: virtual
         '403':
           description: Forbidden
           examples:
@@ -134,11 +167,11 @@ paths:
           examples:
             application/json:
               data:
-                id: 817
+                id: 259
                 name: new name
-                description: Velit corporis aperiam. Nostrum dolorum voluptatem. Eum
-                  voluptate ut.
-                mode: outdoor
+                description: Tempora incidunt omnis. Molestiae cupiditate aut. Nemo
+                  in et.
+                mode: virtual
         '403':
           description: Forbidden
           examples:
@@ -170,13 +203,13 @@ paths:
           examples:
             application/json:
               data:
-                id: 820
-                name: minima
-                description: Consequatur eius dicta. Cumque excepturi perspiciatis.
-                  Omnis et sint.
-                mode: indoor
-                created_at: '2020-12-12T08:00:27.224-06:00'
-                updated_at: '2020-12-12T08:00:27.224-06:00'
+                id: 262
+                name: laudantium
+                description: Alias dolorem reprehenderit. Nisi eaque voluptatibus.
+                  Corporis quisquam eaque.
+                mode: outdoor
+                created_at: '2020-12-12T10:59:17.168-06:00'
+                updated_at: '2020-12-12T10:59:17.168-06:00'
         '403':
           description: Forbidden
           examples:
@@ -229,16 +262,16 @@ paths:
           examples:
             application/json:
               data:
-                id: 120
+                id: 75
                 schedule:
-                  id: 214
-                  begin_at: '2020-12-12T09:00:27.000-06:00'
-                  finish_at: '2020-12-12T10:00:27.000-06:00'
+                  id: 111
+                  begin_at: '2020-12-12T11:59:17.000-06:00'
+                  finish_at: '2020-12-12T12:59:17.000-06:00'
                 activity:
-                  id: 823
-                  name: necessitatibus
-                  description: Veritatis quibusdam enim. Repellendus libero et. Quia
-                    aspernatur mollitia.
+                  id: 265
+                  name: nobis
+                  description: Et et et. Autem veniam consequuntur. Culpa aliquid
+                    reprehenderit.
                   mode: outdoor
                 taken_seats: 0
                 seats: 5
@@ -288,9 +321,9 @@ paths:
           examples:
             application/json:
               data:
-                id: 216
-                begin_at: '2020-12-12T09:00:26.000-06:00'
-                finish_at: '2020-12-12T11:00:26.000-06:00'
+                id: 113
+                begin_at: '2020-12-12T11:59:16.000-06:00'
+                finish_at: '2020-12-12T13:59:16.000-06:00'
         '403':
           description: Forbidden
           examples:
@@ -326,19 +359,150 @@ paths:
           examples:
             application/json:
               data:
-              - id: 121
+              - id: 4
                 schedule:
-                  id: 217
-                  begin_at: '2020-12-12T09:00:27.000-06:00'
-                  finish_at: '2020-12-12T10:00:27.000-06:00'
+                  id: 6
+                  begin_at: '2020-12-12T11:09:38.000-06:00'
+                  finish_at: '2020-12-12T12:09:38.000-06:00'
                 activity:
-                  id: 825
-                  name: id
-                  description: Beatae magnam consequatur. Unde sit nobis. Nostrum
-                    accusamus quibusdam.
+                  id: 17
+                  name: non
+                  description: Sed deserunt earum. Nam voluptatibus cumque. Sunt ipsam
+                    modi.
+                  mode: outdoor
+                taken_seats: 0
+                seats: 15
+              - id: 8
+                schedule:
+                  id: 12
+                  begin_at: '2020-12-12T11:09:55.000-06:00'
+                  finish_at: '2020-12-12T12:09:55.000-06:00'
+                activity:
+                  id: 34
+                  name: quibusdam
+                  description: Fugiat sed laboriosam. Voluptatem assumenda fuga. Consequatur
+                    voluptatem voluptatibus.
                   mode: virtual
                 taken_seats: 0
+                seats: 5
+              - id: 12
+                schedule:
+                  id: 18
+                  begin_at: '2020-12-12T11:10:10.000-06:00'
+                  finish_at: '2020-12-12T12:10:10.000-06:00'
+                activity:
+                  id: 51
+                  name: ducimus
+                  description: Excepturi ipsum sunt. Recusandae sit rem. Doloremque
+                    cumque quae.
+                  mode: virtual
+                taken_seats: 0
+                seats: 16
+              - id: 16
+                schedule:
+                  id: 24
+                  begin_at: '2020-12-12T11:10:43.000-06:00'
+                  finish_at: '2020-12-12T12:10:43.000-06:00'
+                activity:
+                  id: 68
+                  name: cum
+                  description: Aperiam voluptas eveniet. Placeat eius quisquam. Voluptatem
+                    in ut.
+                  mode: virtual
+                taken_seats: 0
+                seats: 13
+              - id: 20
+                schedule:
+                  id: 30
+                  begin_at: '2020-12-12T11:11:32.000-06:00'
+                  finish_at: '2020-12-12T12:11:32.000-06:00'
+                activity:
+                  id: 85
+                  name: deserunt
+                  description: Eligendi cupiditate consequuntur. Autem earum quibusdam.
+                    Incidunt dolores qui.
+                  mode: virtual
+                taken_seats: 0
+                seats: 19
+              - id: 76
+                schedule:
+                  id: 114
+                  begin_at: '2020-12-12T11:59:17.000-06:00'
+                  finish_at: '2020-12-12T12:59:17.000-06:00'
+                activity:
+                  id: 267
+                  name: rem
+                  description: Est praesentium sed. Dolore non quia. Voluptatem quia
+                    omnis.
+                  mode: outdoor
+                taken_seats: 0
                 seats: 6
+              - id: 24
+                schedule:
+                  id: 36
+                  begin_at: '2020-12-12T11:13:16.000-06:00'
+                  finish_at: '2020-12-12T12:13:16.000-06:00'
+                activity:
+                  id: 102
+                  name: quod
+                  description: Esse nisi non. Ipsam voluptas iusto. In qui voluptatem.
+                  mode: virtual
+                taken_seats: 0
+                seats: 16
+              - id: 28
+                schedule:
+                  id: 42
+                  begin_at: '2020-12-12T11:14:42.000-06:00'
+                  finish_at: '2020-12-12T12:14:42.000-06:00'
+                activity:
+                  id: 119
+                  name: et
+                  description: Aut vel sit. Aut velit aut. Possimus accusantium tenetur.
+                  mode: outdoor
+                taken_seats: 0
+                seats: 12
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
+  "/client/schedule_activities/{id}/book":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      required: true
+    post:
+      summary: Book an activity
+      tags:
+      - Booking
+      description: It books an activity to the user
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Activity booked
+          examples:
+            application/json:
+              data:
+              - id: 78
+                schedule:
+                  id: 116
+                  begin_at: '2020-12-12T11:59:17.000-06:00'
+                  finish_at: '2020-12-12T12:59:17.000-06:00'
+                activity:
+                  id: 269
+                  name: expedita
+                  description: Dolores non totam. Veritatis sunt sed. Nobis distinctio
+                    a.
+                  mode: outdoor
+                taken_seats: 0
+                seats: 20
         '403':
           description: Forbidden
           examples:
@@ -382,12 +546,12 @@ paths:
           description: Get access token
           examples:
             application/json:
-              access_token: VajBacngWetQv-gNZxAaia2F2RVwLkgQo6NLtNheerE
+              access_token: inCFk53cCh9nzMLp7K6rnTBdd5XZuSkZ4b_iFNgdwRA
               token_type: Bearer
               expires_in: 7200
-              refresh_token: Qt78nOS7oMey08JHPSL1c7-cosTocVhKL6Ge_jGFlfQ
+              refresh_token: 7zwuFWTFAMtZR_CvslCM_sXHdfLLlofOCkxlvaaM0w0
               scope: public
-              created_at: 1607781627
+              created_at: 1607792357
   "/users/register":
     post:
       summary: Register a user

@@ -17,11 +17,15 @@ Rails.application.routes.draw do
     end
 
     namespace :client do
-      resources :schedule_activities
+      resources :schedule_activities do
+        member do
+          post :book, to: 'schedule_activities#book'
+        end
+      end
     end
 
     namespace :users do
-      post :create, path: '/register' ,to: 'create'
+      post :create, path: '/register', to: 'create'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

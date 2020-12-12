@@ -6,6 +6,13 @@ class Api::Client::ScheduleActivitiesController < ApplicationController
     }
   end
 
+  def book
+    user_scheduled_activities = ScheduleActivityUser::Booker.call(@current_user, @resource)
+    render json: {
+      data: ScheduleActivity::Presenter.for_collection.new(user_scheduled_activities)
+    }
+  end
+
   private
 
   def authorize_request!
