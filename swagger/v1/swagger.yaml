@@ -50,7 +50,7 @@ paths:
           examples:
             application/json:
               data:
-                id: 115
+                id: 130
                 name: foo
                 description: bar
                 mode: outdoor
@@ -134,11 +134,10 @@ paths:
           examples:
             application/json:
               data:
-                id: 116
+                id: 131
                 name: new name
-                description: Inventore consequatur voluptas. Earum ipsam eaque. Sint
-                  dolores qui.
-                mode: indoor
+                description: Et iste officia. Rerum totam maxime. Eaque alias deserunt.
+                mode: virtual
         '403':
           description: Forbidden
           examples:
@@ -170,13 +169,12 @@ paths:
           examples:
             application/json:
               data:
-                id: 119
-                name: nulla
-                description: Rerum amet autem. Officiis voluptatem consequatur. Itaque
-                  odit eum.
-                mode: indoor
-                created_at: '2020-12-12T14:41:00.528-06:00'
-                updated_at: '2020-12-12T14:41:00.528-06:00'
+                id: 134
+                name: debitis
+                description: Omnis dolorem magnam. Ut numquam quam. Et in architecto.
+                mode: virtual
+                created_at: '2020-12-12T14:55:48.706-06:00'
+                updated_at: '2020-12-12T14:55:48.706-06:00'
         '403':
           description: Forbidden
           examples:
@@ -229,16 +227,16 @@ paths:
           examples:
             application/json:
               data:
-                id: 51
+                id: 58
                 schedule:
-                  id: 67
-                  begin_at: '2020-12-12T15:41:00.000-06:00'
-                  finish_at: '2020-12-12T16:41:00.000-06:00'
+                  id: 76
+                  begin_at: '2020-12-12T15:55:48.000-06:00'
+                  finish_at: '2020-12-12T16:55:48.000-06:00'
                 activity:
-                  id: 122
-                  name: consequatur
-                  description: Sint enim numquam. Enim aut omnis. Debitis eligendi
-                    voluptas.
+                  id: 137
+                  name: accusantium
+                  description: Numquam voluptatem saepe. Est quaerat qui. Qui voluptatibus
+                    enim.
                   mode: outdoor
                 taken_seats: 0
                 seats: 5
@@ -288,9 +286,9 @@ paths:
           examples:
             application/json:
               data:
-                id: 69
-                begin_at: '2020-12-12T15:40:59.000-06:00'
-                finish_at: '2020-12-12T17:40:59.000-06:00'
+                id: 78
+                begin_at: '2020-12-12T15:55:48.000-06:00'
+                finish_at: '2020-12-12T17:55:48.000-06:00'
         '403':
           description: Forbidden
           examples:
@@ -382,18 +380,19 @@ paths:
           examples:
             application/json:
               data:
-              - id: 56
+              - id: 63
                 schedule:
-                  id: 74
-                  begin_at: '2020-12-12T15:41:00.000-06:00'
-                  finish_at: '2020-12-12T16:41:00.000-06:00'
+                  id: 83
+                  begin_at: '2020-12-12T15:55:49.000-06:00'
+                  finish_at: '2020-12-12T16:55:49.000-06:00'
                 activity:
-                  id: 128
-                  name: quasi
-                  description: Ipsam omnis id. Est temporibus earum. Modi id earum.
-                  mode: indoor
+                  id: 143
+                  name: omnis
+                  description: Dolore reprehenderit deserunt. Aut corporis velit.
+                    Non quas ipsa.
+                  mode: outdoor
                 taken_seats: 1
-                seats: 13
+                seats: 10
         '403':
           description: Forbidden
           examples:
@@ -437,12 +436,12 @@ paths:
           description: Get access token
           examples:
             application/json:
-              access_token: CznBbJ0hCuvvjDSviHNm7S59pWBfHOoMLeC7pHIjhFM
+              access_token: "-n5Mnnc0Sl8vg6QtEwDVKdW0krWyabXE6YxyEFUv9S8"
               token_type: Bearer
               expires_in: 7200
-              refresh_token: 27tRl3-JYi2eE7wbVE7AeWaLP5rbnYjLawwjUXOY2X0
+              refresh_token: qNWfHwnLzPpYz-_ffT3F1E39h9ndku4JMZ4UMNi_fp0
               scope: public
-              created_at: 1607805660
+              created_at: 1607806549
   "/users/register":
     post:
       summary: Register a user
