@@ -12,4 +12,8 @@ class Api::Admin::SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:begin_at, :finish_at)
   end
+
+  def authorize_request!
+    authorize [:Admin, Schedule]
+  end
 end

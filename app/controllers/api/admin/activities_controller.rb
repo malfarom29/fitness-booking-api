@@ -33,4 +33,8 @@ class Api::Admin::ActivitiesController < ApplicationController
   def activity_params
     params.require(:activity).permit(:name, :description, :mode)
   end
+
+  def authorize_request!
+    authorize [:Admin, Activity]
+  end
 end

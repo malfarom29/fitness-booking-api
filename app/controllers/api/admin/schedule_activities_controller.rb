@@ -12,4 +12,8 @@ class Api::Admin::ScheduleActivitiesController < ApplicationController
   def schedule_activity_params
     params.require(:schedule_activity).permit(:schedule_id, :activity_id, :seats)
   end
+
+  def authorize_request!
+    authorize [:Admin, ScheduleActivity]
+  end
 end

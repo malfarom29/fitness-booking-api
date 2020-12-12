@@ -10,6 +10,7 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_record
     rescue_from ActionController::BadRequest, with: :bad_requests
     rescue_from ActionController::ParameterMissing, with: :param_missing
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   end
 
   private

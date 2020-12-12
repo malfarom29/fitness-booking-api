@@ -3,6 +3,11 @@ swagger: '2.0'
 info:
   title: API V1
   version: v1
+securityDefinitions:
+  bearerAuth:
+    type: apiKey
+    in: header
+    name: Authorization
 basePath: "/api"
 paths:
   "/admin/activities":
@@ -10,6 +15,8 @@ paths:
       summary: Creates a new activity
       tags:
       - Activities
+      security:
+      - bearerAuth: []
       description: On this endpoint the admin is able to create a new activity
       consumes:
       - application/json
@@ -43,7 +50,7 @@ paths:
           examples:
             application/json:
               data:
-                id: 7
+                id: 578
                 name: foo
                 description: bar
                 mode: outdoor
@@ -62,6 +69,8 @@ paths:
       tags:
       - Activities
       description: Shows a list of activities
+      security:
+      - bearerAuth: []
       produces:
       - application/json
       responses:
@@ -81,6 +90,8 @@ paths:
       tags:
       - Activities
       description: It updates requested fields from an specific activity
+      security:
+      - bearerAuth: []
       consumes:
       - application/json
       parameters:
@@ -107,11 +118,11 @@ paths:
           examples:
             application/json:
               data:
-                id: 8
+                id: 579
                 name: new name
-                description: Repellendus nemo consequatur. Ipsum magnam praesentium.
-                  Debitis atque est.
-                mode: indoor
+                description: Consequatur est et. Dolorem cupiditate quae. Aut quae
+                  quaerat.
+                mode: outdoor
         '404':
           description: Not found
           examples:
@@ -125,6 +136,8 @@ paths:
       tags:
       - Activities
       description: Shows an specific activity
+      security:
+      - bearerAuth: []
       produces:
       - application/json
       responses:
@@ -133,13 +146,13 @@ paths:
           examples:
             application/json:
               data:
-                id: 10
-                name: laborum
-                description: Reiciendis veritatis et. Et excepturi voluptatem. Temporibus
-                  atque laboriosam.
-                mode: virtual
-                created_at: '2020-12-12T00:01:38.799-06:00'
-                updated_at: '2020-12-12T00:01:38.799-06:00'
+                id: 581
+                name: nulla
+                description: Odio quia repudiandae. Est id fuga. Enim praesentium
+                  in.
+                mode: outdoor
+                created_at: '2020-12-12T01:52:20.367-06:00'
+                updated_at: '2020-12-12T01:52:20.367-06:00'
         '404':
           description: Not found
           examples:
@@ -154,6 +167,8 @@ paths:
       tags:
       - Activity Scheduling
       description: Schedule an activity to be available for clients
+      security:
+      - bearerAuth: []
       consumes:
       - application/json
       produces:
@@ -182,16 +197,16 @@ paths:
           examples:
             application/json:
               data:
-                id: 2
+                id: 58
                 schedule:
-                  id: 3
-                  begin_at: '2020-12-12T01:01:38.000-06:00'
-                  finish_at: '2020-12-12T02:01:38.000-06:00'
+                  id: 127
+                  begin_at: '2020-12-12T02:52:20.000-06:00'
+                  finish_at: '2020-12-12T03:52:20.000-06:00'
                 activity:
-                  id: 12
-                  name: facilis
-                  description: Voluptatibus ipsa voluptatum. Voluptas vitae ducimus.
-                    Minima consequatur sunt.
+                  id: 583
+                  name: nisi
+                  description: Dolor porro laborum. Vero omnis impedit. Suscipit perspiciatis
+                    est.
                   mode: outdoor
                 taken_seats: 0
                 seats: 5
@@ -203,6 +218,8 @@ paths:
       description: Add a schedule available for activities. This schedules may have
         many activities. For example, from 8AM to 10AM can be scheduled a swimming
         session and a boxing session
+      security:
+      - bearerAuth: []
       consumes:
       - application/json
       produces:
@@ -231,9 +248,9 @@ paths:
           examples:
             application/json:
               data:
-                id: 4
-                begin_at: '2020-12-12T01:01:38.000-06:00'
-                finish_at: '2020-12-12T03:01:38.000-06:00'
+                id: 128
+                begin_at: '2020-12-12T02:52:19.000-06:00'
+                finish_at: '2020-12-12T04:52:19.000-06:00'
         '422':
           description: Invalid values
           examples:
@@ -279,12 +296,12 @@ paths:
           description: Get access token
           examples:
             application/json:
-              access_token: BX0kpGARkmXYwYUJ4s5eIsjdCVkf0hFHer2L4lYa11U
+              access_token: 23kP9VzuSJgDkp_XfPqJre8qYF9BLnoLdK5AYoVIHZQ
               token_type: Bearer
               expires_in: 7200
-              refresh_token: yh6P6q_2PVcg8kFsFL9y3AYbyd3dL4KrpddF_itVd00
+              refresh_token: HmF6PXUkjsUaRIiSf7h7tcRiIUB65InS7iZ4gMGXGyw
               scope: public
-              created_at: 1607752898
+              created_at: 1607759540
   "/users/register":
     post:
       summary: Register a user
