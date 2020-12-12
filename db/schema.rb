@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_015545) do
+ActiveRecord::Schema.define(version: 2020_12_12_141430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,34 @@ ActiveRecord::Schema.define(version: 2020_12_12_015545) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "schedule_activities", force: :cascade do |t|
+    t.bigint "schedule_id"
+    t.bigint "activity_id"
+    t.integer "seats", null: false
+    t.integer "taken_seats", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_schedule_activities_on_activity_id"
+    t.index ["schedule_id"], name: "index_schedule_activities_on_schedule_id"
+  end
+
+  create_table "schedule_activity_users", force: :cascade do |t|
+    t.bigint "schedule_activity_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_activity_id", "user_id"], name: "unique_pair_of", unique: true
+    t.index ["schedule_activity_id"], name: "index_schedule_activity_users_on_schedule_activity_id"
+    t.index ["user_id"], name: "index_schedule_activity_users_on_user_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.datetime "begin_at", null: false
+    t.datetime "finish_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -79,4 +107,8 @@ ActiveRecord::Schema.define(version: 2020_12_12_015545) do
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
+  add_foreign_key "schedule_activities", "activities"
+  add_foreign_key "schedule_activities", "schedules"
+  add_foreign_key "schedule_activity_users", "schedule_activities"
+  add_foreign_key "schedule_activity_users", "users"
 end

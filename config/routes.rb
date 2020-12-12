@@ -12,9 +12,24 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :admin do
       resources :activities
+      resources :schedules
+      resources :schedule_activities
     end
+
+    namespace :client do
+      resources :schedule_activities do
+        collection do
+          get :available, to: 'schedule_activities#available'
+        end
+
+        member do
+          post :book, to: 'schedule_activities#book'
+        end
+      end
+    end
+
     namespace :users do
-      post :create, path: '/register' ,to: 'create'
+      post :create, path: '/register', to: 'create'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

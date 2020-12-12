@@ -3,6 +3,11 @@ swagger: '2.0'
 info:
   title: API V1
   version: v1
+securityDefinitions:
+  bearerAuth:
+    type: apiKey
+    in: header
+    name: Authorization
 basePath: "/api"
 paths:
   "/admin/activities":
@@ -10,6 +15,8 @@ paths:
       summary: Creates a new activity
       tags:
       - Activities
+      security:
+      - bearerAuth: []
       description: On this endpoint the admin is able to create a new activity
       consumes:
       - application/json
@@ -43,10 +50,18 @@ paths:
           examples:
             application/json:
               data:
-                id: 126
+                id: 130
                 name: foo
                 description: bar
                 mode: outdoor
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
         '422':
           description: Missing properties or Invalid Values
           examples:
@@ -62,6 +77,8 @@ paths:
       tags:
       - Activities
       description: Shows a list of activities
+      security:
+      - bearerAuth: []
       produces:
       - application/json
       responses:
@@ -70,6 +87,14 @@ paths:
           examples:
             application/json:
               data: []
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
   "/admin/activities/{id}":
     parameters:
     - name: id
@@ -81,6 +106,8 @@ paths:
       tags:
       - Activities
       description: It updates requested fields from an specific activity
+      security:
+      - bearerAuth: []
       consumes:
       - application/json
       parameters:
@@ -107,10 +134,18 @@ paths:
           examples:
             application/json:
               data:
-                id: 127
+                id: 131
                 name: new name
-                description: Inventore quis soluta. Minima sunt omnis. Est dolor alias.
-                mode: outdoor
+                description: Et iste officia. Rerum totam maxime. Eaque alias deserunt.
+                mode: virtual
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
         '404':
           description: Not found
           examples:
@@ -124,6 +159,8 @@ paths:
       tags:
       - Activities
       description: Shows an specific activity
+      security:
+      - bearerAuth: []
       produces:
       - application/json
       responses:
@@ -132,13 +169,20 @@ paths:
           examples:
             application/json:
               data:
-                id: 129
-                name: id
-                description: Rerum id expedita. Nam ea aperiam. Praesentium animi
-                  at.
+                id: 134
+                name: debitis
+                description: Omnis dolorem magnam. Ut numquam quam. Et in architecto.
                 mode: virtual
-                created_at: '2020-12-12T04:22:43.645Z'
-                updated_at: '2020-12-12T04:22:43.645Z'
+                created_at: '2020-12-12T14:55:48.706-06:00'
+                updated_at: '2020-12-12T14:55:48.706-06:00'
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
         '404':
           description: Not found
           examples:
@@ -146,6 +190,216 @@ paths:
               error:
                 type: Record not found
                 message: Activity with id = 0 wasn't found
+                details: {}
+  "/admin/schedule_activities":
+    post:
+      summary: Schedule an activity
+      tags:
+      - Activity Scheduling
+      description: Schedule an activity to be available for clients
+      security:
+      - bearerAuth: []
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: schedule_activity
+        in: body
+        schema:
+          type: object
+          properties:
+            schedule_activity:
+              properties:
+                schedule_id:
+                  type: integer
+                activity_id:
+                  type: integer
+                seats:
+                  type: integer
+              required:
+              - schedule_id
+              - activity_id
+              - seats
+      responses:
+        '200':
+          description: Scheduled a new activity
+          examples:
+            application/json:
+              data:
+                id: 58
+                schedule:
+                  id: 76
+                  begin_at: '2020-12-12T15:55:48.000-06:00'
+                  finish_at: '2020-12-12T16:55:48.000-06:00'
+                activity:
+                  id: 137
+                  name: accusantium
+                  description: Numquam voluptatem saepe. Est quaerat qui. Qui voluptatibus
+                    enim.
+                  mode: outdoor
+                taken_seats: 0
+                seats: 5
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
+  "/admin/schedules":
+    post:
+      summary: Add a new schedule
+      tags:
+      - Schedules
+      description: Add a schedule available for activities. This schedules may have
+        many activities. For example, from 8AM to 10AM can be scheduled a swimming
+        session and a boxing session
+      security:
+      - bearerAuth: []
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: schedule
+        in: body
+        schema:
+          type: object
+          properties:
+            schedule:
+              type: object
+              properties:
+                begin_at:
+                  type: string
+                  format: date-time
+                finish_at:
+                  type: string
+                  format: date-time
+              required:
+              - begin_at
+              - finish_at
+      responses:
+        '200':
+          description: Create a new schedule
+          examples:
+            application/json:
+              data:
+                id: 78
+                begin_at: '2020-12-12T15:55:48.000-06:00'
+                finish_at: '2020-12-12T17:55:48.000-06:00'
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
+        '422':
+          description: Invalid values
+          examples:
+            application/json:
+              error:
+                type: Unprocessable entity
+                message: Validation failed
+                details:
+                  begin_at:
+                  - must be greater than actual date
+  "/client/schedule_activities":
+    get:
+      summary: List of schedules available
+      tags:
+      - - Clients
+        - Activities
+      security:
+      - bearerAuth: []
+      description: List of activities booked by the client
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json:
+              data: []
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
+  "/client/schedule_activities/available":
+    get:
+      summary: List of schedules available
+      tags:
+      - - Clients
+        - Activities
+      security:
+      - bearerAuth: []
+      description: List of activities available to the client and that has not been
+        booked by him/her. The activities already booked by the client, will not be
+        shown
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json:
+              data: []
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
+  "/client/schedule_activities/{id}/book":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      required: true
+    post:
+      summary: Book an activity
+      tags:
+      - Booking
+      description: It books an activity to the user
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: Activity booked
+          examples:
+            application/json:
+              data:
+              - id: 63
+                schedule:
+                  id: 83
+                  begin_at: '2020-12-12T15:55:49.000-06:00'
+                  finish_at: '2020-12-12T16:55:49.000-06:00'
+                activity:
+                  id: 143
+                  name: omnis
+                  description: Dolore reprehenderit deserunt. Aut corporis velit.
+                    Non quas ipsa.
+                  mode: outdoor
+                taken_seats: 1
+                seats: 10
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
                 details: {}
   "/oauth/token":
     post:
@@ -182,12 +436,12 @@ paths:
           description: Get access token
           examples:
             application/json:
-              access_token: q24agAUT4R0CVGSrfaQSSkJ1QsPbs-iZhotasI_-xlc
+              access_token: "-n5Mnnc0Sl8vg6QtEwDVKdW0krWyabXE6YxyEFUv9S8"
               token_type: Bearer
               expires_in: 7200
-              refresh_token: XKSC-IzdPGUlsdJo8EA5Nry9El4134J82coFajIfHgY
+              refresh_token: qNWfHwnLzPpYz-_ffT3F1E39h9ndku4JMZ4UMNi_fp0
               scope: public
-              created_at: 1607746963
+              created_at: 1607806549
   "/users/register":
     post:
       summary: Register a user

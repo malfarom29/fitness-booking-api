@@ -10,9 +10,15 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_record
     rescue_from ActionController::BadRequest, with: :bad_requests
     rescue_from ActionController::ParameterMissing, with: :param_missing
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   end
 
   private
+
+  def user_not_authorized(exception)
+    Rails.logger.error("#{exception.policy.user.email} is #{exception.message}")
+    render_error(type: 'Forbidden Error', message: 'You cannot perform this action', status: 403)
+  end
 
   def null_constraint(exception)
     Rails.logger.error(exception.cause)
