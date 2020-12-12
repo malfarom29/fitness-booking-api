@@ -50,7 +50,7 @@ paths:
           examples:
             application/json:
               data:
-                id: 578
+                id: 629
                 name: foo
                 description: bar
                 mode: outdoor
@@ -118,11 +118,10 @@ paths:
           examples:
             application/json:
               data:
-                id: 579
+                id: 630
                 name: new name
-                description: Consequatur est et. Dolorem cupiditate quae. Aut quae
-                  quaerat.
-                mode: outdoor
+                description: Consectetur a quia. Ut ipsam iusto. Doloribus quod sed.
+                mode: indoor
         '404':
           description: Not found
           examples:
@@ -146,13 +145,12 @@ paths:
           examples:
             application/json:
               data:
-                id: 581
-                name: nulla
-                description: Odio quia repudiandae. Est id fuga. Enim praesentium
-                  in.
+                id: 632
+                name: aut
+                description: Et eum id. Cum aut alias. Unde ea ut.
                 mode: outdoor
-                created_at: '2020-12-12T01:52:20.367-06:00'
-                updated_at: '2020-12-12T01:52:20.367-06:00'
+                created_at: '2020-12-12T07:46:48.499-06:00'
+                updated_at: '2020-12-12T07:46:48.499-06:00'
         '404':
           description: Not found
           examples:
@@ -197,17 +195,17 @@ paths:
           examples:
             application/json:
               data:
-                id: 58
+                id: 69
                 schedule:
-                  id: 127
-                  begin_at: '2020-12-12T02:52:20.000-06:00'
-                  finish_at: '2020-12-12T03:52:20.000-06:00'
+                  id: 146
+                  begin_at: '2020-12-12T08:46:48.000-06:00'
+                  finish_at: '2020-12-12T09:46:48.000-06:00'
                 activity:
-                  id: 583
-                  name: nisi
-                  description: Dolor porro laborum. Vero omnis impedit. Suscipit perspiciatis
-                    est.
-                  mode: outdoor
+                  id: 634
+                  name: non
+                  description: Tenetur repudiandae ut. Enim necessitatibus ut. Voluptas
+                    aut occaecati.
+                  mode: virtual
                 taken_seats: 0
                 seats: 5
   "/admin/schedules":
@@ -248,9 +246,9 @@ paths:
           examples:
             application/json:
               data:
-                id: 128
-                begin_at: '2020-12-12T02:52:19.000-06:00'
-                finish_at: '2020-12-12T04:52:19.000-06:00'
+                id: 147
+                begin_at: '2020-12-12T08:46:48.000-06:00'
+                finish_at: '2020-12-12T10:46:48.000-06:00'
         '422':
           description: Invalid values
           examples:
@@ -261,6 +259,44 @@ paths:
                 details:
                   begin_at:
                   - must be greater than actual date
+  "/client/schedule_activities":
+    get:
+      summary: List of schedules available
+      tags:
+      - - Clients
+        - Activities
+      security:
+      - bearerAuth: []
+      description: List of activities scheduled available for a client
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: OK
+          examples:
+            application/json:
+              data:
+              - id: 70
+                schedule:
+                  id: 148
+                  begin_at: '2020-12-12T08:46:48.000-06:00'
+                  finish_at: '2020-12-12T09:46:48.000-06:00'
+                activity:
+                  id: 635
+                  name: occaecati
+                  description: Ut mollitia est. Ut dignissimos tenetur. Autem laborum
+                    harum.
+                  mode: indoor
+                taken_seats: 0
+                seats: 6
+        '403':
+          description: Forbidden
+          examples:
+            application/json:
+              error:
+                type: Forbidden Error
+                message: You cannot perform this action
+                details: {}
   "/oauth/token":
     post:
       summary: Get access token
@@ -296,12 +332,12 @@ paths:
           description: Get access token
           examples:
             application/json:
-              access_token: 23kP9VzuSJgDkp_XfPqJre8qYF9BLnoLdK5AYoVIHZQ
+              access_token: uDnXIDs6L1AaPDmUcovWiFAzzU7CMhZqokPCG3tedDc
               token_type: Bearer
               expires_in: 7200
-              refresh_token: HmF6PXUkjsUaRIiSf7h7tcRiIUB65InS7iZ4gMGXGyw
+              refresh_token: oC-1GMcseQj74XOe1CLvS6piOIWy5wOIJOgcG6MLz9A
               scope: public
-              created_at: 1607759540
+              created_at: 1607780808
   "/users/register":
     post:
       summary: Register a user

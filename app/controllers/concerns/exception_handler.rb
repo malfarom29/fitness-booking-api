@@ -15,6 +15,11 @@ module ExceptionHandler
 
   private
 
+  def user_not_authorized(exception)
+    Rails.logger.error("#{exception.policy.user.email} is #{exception.message}")
+    render_error(type: 'Forbidden Error', message: 'You cannot perform this action', status: 403)
+  end
+
   def null_constraint(exception)
     Rails.logger.error(exception.cause)
     render_error(type: 'Validation Error', message: 'Record attributes cannot be null or empty', status: :unprocessable_entity)
