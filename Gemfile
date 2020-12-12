@@ -35,6 +35,9 @@ gem 'pundit'
 gem 'representable'
 gem 'multi_json'
 
+# For env variables
+gem 'dotenv-rails'
+
 # To handle number of seats available
 gem 'counter_culture', '~> 2.0'
 
