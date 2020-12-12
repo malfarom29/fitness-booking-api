@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :activities
       resources :schedules
+      resources :schedule_activities
     end
     namespace :users do
       post :create, path: '/register' ,to: 'create'

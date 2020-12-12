@@ -43,7 +43,7 @@ paths:
           examples:
             application/json:
               data:
-                id: 41
+                id: 7
                 name: foo
                 description: bar
                 mode: outdoor
@@ -107,10 +107,10 @@ paths:
           examples:
             application/json:
               data:
-                id: 42
+                id: 8
                 name: new name
-                description: Voluptatibus facilis debitis. Aut voluptatem eum. Sit
-                  vel ea.
+                description: Repellendus nemo consequatur. Ipsum magnam praesentium.
+                  Debitis atque est.
                 mode: indoor
         '404':
           description: Not found
@@ -133,12 +133,13 @@ paths:
           examples:
             application/json:
               data:
-                id: 44
-                name: quaerat
-                description: Unde quos voluptates. Aut ipsa eum. Maxime eligendi aut.
-                mode: indoor
-                created_at: '2020-12-11T23:25:42.218-06:00'
-                updated_at: '2020-12-11T23:25:42.218-06:00'
+                id: 10
+                name: laborum
+                description: Reiciendis veritatis et. Et excepturi voluptatem. Temporibus
+                  atque laboriosam.
+                mode: virtual
+                created_at: '2020-12-12T00:01:38.799-06:00'
+                updated_at: '2020-12-12T00:01:38.799-06:00'
         '404':
           description: Not found
           examples:
@@ -147,6 +148,53 @@ paths:
                 type: Record not found
                 message: Activity with id = 0 wasn't found
                 details: {}
+  "/admin/schedule_activities":
+    post:
+      summary: Schedule an activity
+      tags:
+      - Activity Scheduling
+      description: Schedule an activity to be available for clients
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: schedule_activity
+        in: body
+        schema:
+          type: object
+          properties:
+            schedule_activity:
+              properties:
+                schedule_id:
+                  type: integer
+                activity_id:
+                  type: integer
+                seats:
+                  type: integer
+              required:
+              - schedule_id
+              - activity_id
+              - seats
+      responses:
+        '200':
+          description: Scheduled a new activity
+          examples:
+            application/json:
+              data:
+                id: 2
+                schedule:
+                  id: 3
+                  begin_at: '2020-12-12T01:01:38.000-06:00'
+                  finish_at: '2020-12-12T02:01:38.000-06:00'
+                activity:
+                  id: 12
+                  name: facilis
+                  description: Voluptatibus ipsa voluptatum. Voluptas vitae ducimus.
+                    Minima consequatur sunt.
+                  mode: outdoor
+                taken_seats: 0
+                seats: 5
   "/admin/schedules":
     post:
       summary: Add a new schedule
@@ -165,24 +213,27 @@ paths:
         schema:
           type: object
           properties:
-            begin_at:
-              type: string
-              format: date-time
-            finish_at:
-              type: string
-              format: date-time
-          required:
-          - begin_at
-          - finish_at
+            schedule:
+              type: object
+              properties:
+                begin_at:
+                  type: string
+                  format: date-time
+                finish_at:
+                  type: string
+                  format: date-time
+              required:
+              - begin_at
+              - finish_at
       responses:
         '200':
           description: Create a new schedule
           examples:
             application/json:
               data:
-                id: 6
-                begin_at: '2020-12-12T00:25:41.000-06:00'
-                finish_at: '2020-12-12T02:25:41.000-06:00'
+                id: 4
+                begin_at: '2020-12-12T01:01:38.000-06:00'
+                finish_at: '2020-12-12T03:01:38.000-06:00'
         '422':
           description: Invalid values
           examples:
@@ -228,12 +279,12 @@ paths:
           description: Get access token
           examples:
             application/json:
-              access_token: oLhRggiuxa0kF0HAJr0iHPAVs5I8ceTvfrujQRX0VaI
+              access_token: BX0kpGARkmXYwYUJ4s5eIsjdCVkf0hFHer2L4lYa11U
               token_type: Bearer
               expires_in: 7200
-              refresh_token: eT-xZ1srnk-mLbTgcbfidAyrnVgt7TuzlcLzwaZYSHo
+              refresh_token: yh6P6q_2PVcg8kFsFL9y3AYbyd3dL4KrpddF_itVd00
               scope: public
-              created_at: 1607750742
+              created_at: 1607752898
   "/users/register":
     post:
       summary: Register a user

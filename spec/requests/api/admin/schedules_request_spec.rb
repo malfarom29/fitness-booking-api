@@ -10,10 +10,15 @@ RSpec.describe "Api::Admin::Schedules", type: :request do
       parameter name: :schedule, in: :body, schema: {
         type: :object,
         properties: {
-          begin_at: { type: :string, format: 'date-time' },
-          finish_at: { type: :string, format: 'date-time' }
-        },
-        required: %i[begin_at finish_at]
+          schedule: {
+            type: :object,
+            properties: {
+              begin_at: { type: :string, format: 'date-time' },
+              finish_at: { type: :string, format: 'date-time' }
+            },
+            required: %i[begin_at finish_at]
+          }
+        }
       }
 
       response '200', 'Create a new schedule' do
